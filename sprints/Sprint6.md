@@ -29,7 +29,8 @@ render(){
         todos={this.state.todos}
         editingTodoId={this.state.editingTodoId}
         onEditTodo={this.editTodo.bind(this)}
-        onDeleteTodo={this.deleteTodo.bind(this)} />
+        onDeleteTodo={this.deleteTodo.bind(this)} 
+        onUpdateTodo={this.updateTodo.bind(this)} />
       <CreateTodoForm
         createTodo={this.createTodo.bind(this)} />
     </div>
