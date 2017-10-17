@@ -158,7 +158,7 @@ Remember that in the submit event of the form, we used a function `this.props.cr
 In `src/components/CreateTodoForm`:
 
 ```js
-onSubmit(event){
+onFormSubmit(event){
   event.preventDefault()
   let todo = this.state.todo
   this.props.createTodo(todo)
