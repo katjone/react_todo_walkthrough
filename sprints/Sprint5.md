@@ -32,7 +32,7 @@ let todos = this.props.todos.map( (todo) => {
 })
 ```
 
-Looks like it's not defined here either but passed yet again from a parent container. Finally in the `src/components/TodosContainer.js`:
+Looks like it's not defined here either but passed yet again from a parent container. Finally in the `src/containers/TodosContainer.js`:
 
 ```js
 deleteTodo(todo) {
