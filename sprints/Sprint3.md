@@ -171,7 +171,7 @@ This is just like initialize in ruby(only a bit different). `constructor()` is b
 fetchData(){
   TodoModel.all().then( (res) => {
     this.setState ({
-      todos: res.data,
+      todos: res.data.todos,
       todo: ''
     })
   })
