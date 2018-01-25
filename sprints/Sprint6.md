@@ -5,6 +5,11 @@
 In `containers/TodosContainer.js`:
 
 ```js
+constructor() {
+    ... your existing code here ...
+    this.updateTodo = this.updateTodo.bind(this);
+    this.editTodo = this.editTodo.bind(this);
+}
 updateTodo(todoBody) {
     var todoId = this.state.editingTodoId
     function isUpdatedTodo(todo) {
@@ -28,11 +33,11 @@ render(){
       <Todos
         todos={this.state.todos}
         editingTodoId={this.state.editingTodoId}
-        onEditTodo={this.editTodo.bind(this)}
-        onDeleteTodo={this.deleteTodo.bind(this)} 
-        onUpdateTodo={this.updateTodo.bind(this)} />
+        onEditTodo={this.editTodo}
+        onDeleteTodo={this.deleteTodo} 
+        onUpdateTodo={this.updateTodo} />
       <CreateTodoForm
-        createTodo={this.createTodo.bind(this)} />
+        createTodo={this.createTodo} />
     </div>
   )
 }
@@ -64,18 +69,25 @@ let todos = this.props.todos.map( (todo) => {
 In `components/Todo.js` We need to use the method:
 
 ```js
+constructor() {
+    ... your existing code here ...
+    this.editClickedTodo = this.editClickedTodo.bind(this);
+}
+editClickedTodo() {
+    this.props.onEditTodo(this.props.todo)
+}
 render(){
     if (this.props.editingTodoId === this.props.todo._id){
       console.log(`${this.props.todo.body} is being edited`);
     }
     return(
       <p data-todos-index={this.props.todo.id}>
-        <span onClick={() => this.props.onEditTodo(this.props.todo)}>
+        <span onClick={ this.editClickedTodo }>
           {this.props.todo.body}
         </span>
         <span
           className='deleteButton'
-          onClick={ () => this.props.onDeleteTodo(this.props.todo) }>
+          onClick={ this.deleteClickedTodo }>
             (X)
         </span>
       </p>
