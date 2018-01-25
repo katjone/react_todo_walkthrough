@@ -1,11 +1,11 @@
 ## Sprint 0: Getting Started
 
-Now let's create the react app. We're going to be using react-router v3 for this, so we will need to install that as well.
+Now let's create the react app. We're going to be using the library `react-router-dom` for this, so we will need to install that as well.
 
 ```bash
 $ create-react-app my-react-todo
 $ cd my-react-todo
-$ npm install react-router@3.0.0
+$ npm install react-router-dom
 $ npm start
 ```
 
