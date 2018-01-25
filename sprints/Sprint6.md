@@ -86,14 +86,12 @@ editClickedTodo() {
     this.props.onEditTodo(this.props.todo)
 }
 render(){
-    if (this.props.editingTodoId === this.props.todo._id){
-      console.log(`${this.props.todo.body} is being edited`);
-    }
     return(
       <p data-todos-index={this.props.todo.id}>
         <span onClick={ this.editClickedTodo }>
           {this.props.todo.body}
         </span>
+        { this.props.editingTodoId === this.props.todo._id ? `${this.props.todo.body} is being edited` : '' }
         <span
           className='deleteButton'
           onClick={ this.deleteClickedTodo }>
@@ -104,7 +102,8 @@ render(){
   }
 ```
 
-Phew! Now we can test out our props-flow by clicking on a todo and trigger a `console.log`.
+Phew! Now we can test out our props-flow by clicking on a todo and seeing if we get the `${this.props.todo.body} is being edited` message displayed.
+
 ### Breaking it Down:
 
 #### Trickling Down
@@ -151,17 +150,15 @@ This certainly the trickiest part of the lesson-- the rest is easy by comparison
 
 ### Replacing the console.log with a Form for editing Todos
 
-The next steps here involve composing a form in place of where we have that `console.log` in `components/Todo.js`.
+The next steps here involve showing a form in place of the `${this.props.todo.body} is being edited` message in `components/Todo.js`.
 
-You should replace it with something like this:
+You should replace that `${this.props.todo.body} is being edited` message with something like this:
 
 ```js
-return (
-  <TodoForm
-    autoFocus={true}
-    buttonName="Update Todo!"
-    onUpdateTodo={this.props.onUpdateTodo} />
-)
+<TodoForm
+  autoFocus={true}
+  buttonName="Update Todo!"
+  onUpdateTodo={this.props.onUpdateTodo} />
 ```
 
 You will then have to both write that component and then import it into `components/Todo.js`:
@@ -185,7 +182,6 @@ class TodoForm extends Component {
   onSubmit(event){
     event.preventDefault()
     var todo = this.state.todo
-    console.log("todo is", todo)
     this.props.onUpdateTodo(todo)
     this.setState({
       todo: ""
@@ -215,12 +211,11 @@ export default TodoForm
 ```js
 //Todo.js
 //...
-console.log(`${this.props.todo.body} is being edited`);
-return (
+{ this.props.editingTodoId === this.props.todo._id ? 
   <TodoForm
     autoFocus={true}
     onUpdateTodo={this.props.onUpdateTodo}
-    buttonName="Update Todo!"/>
+    buttonName="Update Todo!"/> : '' }
 )
 //...
 ```
