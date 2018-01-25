@@ -20,36 +20,6 @@ class TodosContainer extends Component {
 export default TodosContainer
 ```
 
-Then we just have to update the routes in `src/config/routes.js`:
-
-```js
-//...
-import TodosContainer from '../containers/TodosContainer'
-
-export default (
-  <Switch>
-    <Route exact path='/' component={ Home } >
-      <Route path='/todos' component={ TodosContainer }/>
-    </Route>
-  </Switch>
-)
-```
-
-If we click on it we should totally see ..... nothing still. But no error now! Because our `/todos` is nested within our `'/'` route, our `App` Component needs to know what to render. We do this by adding one line of code to our `src/App.js`:
-
-```js
-render() {
-  return (
-    <div className="App">
-      <Header />
-      {this.props.children}
-    </div>
-  );
-}
-```
-
-Great everything works!
-
 ### PAUSE!
 
 Everything up to this point, is most of what you need to know about using react for a website NOT using a back end. Just add css through index.css and you're good to go! Here's some basic style:
