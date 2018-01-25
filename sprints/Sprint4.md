@@ -177,14 +177,17 @@ onFormSubmit(event){
 We pass `createTodo` from the container as `props`. In `src/containers/TodosContainer.js`:
 
 ```js
+constructor() {
+  super();
+  this.createTodo = this.createTodo.bind(this);
+}
 render(){
   return (
     <div className="todosComponent">
       <Todos
-        todos={this.state.todos}
-        onDeleteTodo={this.deleteTodo.bind(this)} />
+        todos={this.state.todos} />
       <CreateTodoForm
-        createTodo={this.createTodo.bind(this)}
+        createTodo={ this.createTodo }
         />
     </div>
   )
