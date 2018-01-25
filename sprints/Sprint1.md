@@ -29,7 +29,7 @@ Now, in `src/App.js`, let's add 2 routes for '/' and '/todos':
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Todos from './containers/TodosContainer';
+import TodosContainer from './containers/TodosContainer';
 
 class App extends Component {
   render() {
