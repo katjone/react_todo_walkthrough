@@ -24,13 +24,13 @@ ReactDOM.render((
 ), document.getElementById('root'))
 ```
 
-Now, in `src/App.js`, add the following routes: 
+Now, in `src/App.js`, let's add 2 routes for '/' and '/todos': 
 
 ```js
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Todos from './components/TodosContainer';
+import Todos from './containers/TodosContainer';
 
 class App extends Component {
   render() {
@@ -47,15 +47,18 @@ class App extends Component {
 
 export default App;
 ```
+
 We use the `Switch` component from `react-router-dom` to tell our app to switch between different routes, depending on the URL. Then, we use the `Route` component, also given to us by `react-router-dom` to create a route for the root path(`'/'`). We also establish that the component that should be rendered here is a `Home` component. There is a second route for the path `/todos`, which should route to a `TodosContainer` component.
 
-This will immediately error our code out, because we don't actually have those files with those components defined. Take some time now to create a `Home` component with some dummy text inside (e.g. "I am the Home page"). Do the same for the `TodosContainer` component (e.g. "I am the TodosContainer page").
+This will immediately ERROR our code out, because we don't actually have those files with those components defined. Take some time now to create a `Home` component with some dummy text inside (e.g. "I am the Home page"). Do the same for the `TodosContainer` component (e.g. "I am the TodosContainer page").
 
 ```bash
 $ mkdir src/components
 $ touch src/components/Home.js
-$ touch src/components/TodosContainer.js
+$ mkdir src/containers
+$ touch src/containers/TodosContainer.js
 ```
+We will go over why `TodosContainer` is in a different `src/containers/` directory, vs the `src/components/` directory we've already created.
 
 > Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly braces, it would have grabbed all of `react-router-dom`'s functionality. Check out the [react-router-dom source code](https://github.com/reactjs/react-router-dom) and we can clearly see the Route is a module within react-router-dom
 
@@ -74,7 +77,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Todos from './components/TodosContainer';
+import Todos from './containers/TodosContainer';
 
 class App extends Component {
   render() {
@@ -138,7 +141,7 @@ In your `config/routes.js` file, copy and paste the routes from your `App` compo
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../components/Home';
-import TodosContainer from '../components/TodosContainer';
+import TodosContainer from '../containers/TodosContainer';
 
 export default (
 	<Switch>
