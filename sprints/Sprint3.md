@@ -38,7 +38,7 @@ We can't really test out the code in this file in isolation, so we must `import`
 
 For now, let's toss this in the `TodosContainer`'s `render()` method: this isn't ultimately going to be where we want to call `TodoModel.all()`, but for testing purposes, it will suffice.
 
-In `components/TodosContainer.js`:
+In `containers/TodosContainer.js`:
 
 ```js
 import React, {Component} from 'react'
