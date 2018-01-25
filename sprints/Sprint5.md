@@ -4,13 +4,19 @@ Deleting will work similarly with regard to passing state. Let's update the `Tod
 
 ```js
 class Todo extends Component {
+  constructor() {
+    this.deleteClickedTodo = this.deleteClickedTodo.bind(this);
+  }
   render(){
+    deleteClickedTodo() {
+      this.props.onDeleteTodo(this.props.todo);
+    }
     return(
       <p data-todos-index={this.props.todo.id}>
         <span>{this.props.todo.body}</span>
         <span
           className='deleteButton'
-          onClick={() => this.props.onDeleteTodo(this.props.todo)}>
+          onClick={this.deleteClickedTodo}>
             (X)
         </span>
       </p>
