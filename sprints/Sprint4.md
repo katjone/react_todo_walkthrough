@@ -15,6 +15,8 @@ class CreateTodoForm extends Component {
     this.state = {
       todo: ''
     }
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
   onInputChange(event){
     this.setState({
@@ -33,9 +35,9 @@ class CreateTodoForm extends Component {
     return (
       <div className='createForm todoForm'>
         <h2>Create Todo Here!</h2>
-        <form onSubmit={event => this.onFormSubmit(event)}>
+        <form onSubmit={ this.onFormSubmit }>
           <input
-            onChange={event => this.onInputChange(event)}
+            onChange={ this.onInputChange }
             placeholder='Write a todo here ...'
             type='text'
             value={this.state.todo} />
