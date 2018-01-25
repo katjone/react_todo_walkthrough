@@ -172,6 +172,11 @@ You will then have to both write that component and then import it into `compone
 import React, {Component} from 'react'
 
 class TodoForm extends Component {
+  constructor() {
+    super();
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
   onChange(event) {
     this.setState({
       todo: event.target.value
