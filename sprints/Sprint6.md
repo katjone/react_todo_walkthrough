@@ -6,7 +6,12 @@ In `containers/TodosContainer.js`:
 
 ```js
 constructor() {
-    ... your existing code here ...
+    super();
+    this.state = {
+        todos: [],
+        editingTodoId: null,
+        editing: false
+    }
     this.updateTodo = this.updateTodo.bind(this);
     this.editTodo = this.editTodo.bind(this);
 }
@@ -18,12 +23,13 @@ updateTodo(todoBody) {
     TodoModel.update(todoId, todoBody).then((res) => {
         let todos = this.state.todos
         todos.find(isUpdatedTodo).body = todoBody
-        this.setState({todos: todos, editingTodoId: null, editing: null})
+        this.setState({todos: todos, editingTodoId: null, editing: false})
     })
 }
 editTodo(todo){
   this.setState({
-    editingTodoId: todo._id
+    editingTodoId: todo._id,
+    editing: true
   })
 }
 render(){
