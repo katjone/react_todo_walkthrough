@@ -1,15 +1,8 @@
 ## Sprint 2: Containers
 
-As we first start to write this container, its going to seem like just another component. Remember that  React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the business logic surrounding a component's state to a container component. We're going to put all that logic in this container. It will start out very similarly to our `Header` component, but end up much more complex.
+Writing a container is going to feel very similar to writing just another component. Remember that  React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the business logic surrounding a component's state to a container component. We're going to put all that logic in this container. It will start out very similarly to our `Header` component, but end up much more complex.
 
-Let's start by creating a containers folder and then the container file:
-
-```bash
-$ mkdir src/containers
-$ touch src/containers/TodosContainer.js
-```
-
-In `src/containers/TodosContainer.js`:
+Let's revise our `src/containers/TodosContainer.js` and replace the dummy text we had before with the following:
 
 ```js
 import React, {Component} from 'react'
