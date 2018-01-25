@@ -2,10 +2,10 @@
 
 We're going to use React Router today to introduce it as a concept. However, it isn't strictly necessary for this application. We're really just going for exposure here. There's a lot to learn about react router and we'll just be scratching the surface. If you want to dive deeper, checkout [this tutorial](https://github.com/reactjs/react-router-tutorial)
 
-We need React Router in the same way that we needed angular routers. We need a way to link to various urls to components in our application. Because our application will be a SPA, we still want to preserve different application-states via the url. This Todo app's application-states (not to be confused with component state) will just be the root url and a url to all todos(`/` and `/todos`)
+We need React Router in the same way that we needed Angular routers. We need a way to link to various urls to components in our application. Because our application will be a SPA, we still want to preserve different application-states via the url. This Todo app's application-states (not to be confused with component state) will just be the root url and a url to all todos(`/` and `/todos`)
 
 ### Creating Routes
-It's great, Routes are just react Components as well! Let's start by installing the `react-router` dependency, making a `config` folder and a `routes.js` file that will contain our routes:
+It's great, Routes are just react Components as well! Since we've installed the `react-router-dom` dependency, we'll start by making a `config` folder and a `routes.js` file that will contain our routes:
 
 ```bash
 $ mkdir src/config
@@ -26,11 +26,11 @@ export default (
 )
 ```
 
-All we've done here is added some dependencies as well as added our App component to this file. Then we used the `Route` component, given to us by `react-router` to create a route for the root path(`'/'`). We also establish that the component that should be rendered here is the App component we defined earlier.
+All we've done here is added some dependencies as well as added our App component to this file. We use the `Switch` component from     `react-router-dom` to tell our app to switch between different routes, depending on the URL. Then, we use the `Route` component, also given to us by `react-router-dom` to create a route for the root path(`'/'`). We also establish that the component that should be rendered here is the `App` component we defined earlier.
 
-> Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly's it would have grabbed all of `react-router-dom` functionality. Check out the [react router source code](https://github.com/reactjs/react-router-dom) and we can clearly see the Route is a module within react-router-dom
+> Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly braces, it would have grabbed all of `react-router-dom`'s functionality. Check out the [react-router-dom source code](https://github.com/reactjs/react-router-dom) and we can clearly see the Route is a module within react-router-dom
 
-Great, we've defined out routes, but it's not going to do anything because nothing knows about this file yet. Let's update our `index.js` to use a Router now instead of just rendering the `App` Component. In `index.js`:
+Great, we've defined our routes, but they're not going to do anything because our app doesn't know about this file yet. Let's update our `index.js` to use a Router now instead of just rendering the `App` Component. In `index.js`:
 
 
 ```js
@@ -42,12 +42,12 @@ import Routes from './config/routes';
 
 ReactDOM.render((
   <BrowserRouter>
-  	{ Routes }
+    { Routes }
   </BrowserRouter>
 ), document.getElementById('root'))
 ```
 
-Great, we should now be able to see hello world show up!
+Great, we should now be able to see our `App` component's "Hello world" show up!
 
 
 
@@ -102,12 +102,8 @@ class Header extends Component{
 export default Header
 ```
 
-In this file, we've grabbed some dependencies and stored them in variables and then defined a component. The `Link` component is exactly what you think it is, a link to another route. You can think of it as `data-ui-sref` in angular or even an `href` in plain 'ol HTML
+In this file, we've grabbed some dependencies and stored them in variables and then defined a component. The `Link` component is exactly what you think it is, a link to another route. You can think of it as `data-ui-sref` in angular or even an `href` in plain 'ol HTML.
 
 Awesome! We now have a header showing up! Let's click on the link.
 
-```
-Warning: [react-router] Location "/todos" did not match any routes
-```
-
-This warning makes sense, our `config/routes.js` only has a reference to `'/'` and nothing else. We'll fix that by adding the first parts of our app's main functionality. But before that... let's talk about containers.
+We get directed to an empty page, which makes sense – our `config/routes.js` only has a reference to `'/'` and nothing else. We'll fix that by adding the first parts of our app's main functionality. But before that... let's talk about containers.
