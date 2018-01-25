@@ -5,10 +5,9 @@ We're going to use React Router today to introduce it as a concept. However, it 
 We need React Router in the same way that we needed Angular routers. We need a way to link to various urls to components in our application. Because our application will be a SPA, we still want to preserve different application-states via the url. This Todo app's application-states (not to be confused with component state) will just be the root url and a url to all todos(`/` and `/todos`)
 
 ### Creating Routes
-It's great, Routes are just react Components as well! Since we've installed the `react-router-dom` dependency, we'll start by defining our home route.
+Routes in React are just React components as well! Since we've installed the `react-router-dom` dependency, we'll start by wrapping our `App` Component in a `BrowserRouter` component available to us from `react-router-dom`. 
 
-Let's update our `index.js` to use a BrowserRouter to wrap our `App` Component. In `index.js`:
-
+In `src/index.js`:
 
 ```js
 import React from 'react';
@@ -144,7 +143,7 @@ import Home from '../components/Home';
 import TodosContainer from '../containers/TodosContainer';
 
 export default (
-	<Switch>
+  <Switch>
     <Route exact path='/' component={ Home }/>
     <Route path='/todos' component={ TodosContainer }/>
   </Switch>
@@ -171,5 +170,7 @@ class App extends Component {
 
 export default App;
 ```
+
+Make sure your routes still work, before moving on.
 
 Great! Now, let's talk about containers.
