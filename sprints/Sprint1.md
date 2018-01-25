@@ -111,7 +111,8 @@ class Header extends Component{
   render(){
     return (
       <header>
-        <h1><Link to={'/todos'}>React Todos</Link></h1>
+        <Link to={'/'}>Home</Link>
+        <Link to={'/todos'}>Todos</Link>
       </header>
     )
   }
@@ -122,13 +123,13 @@ export default Header
 
 In this file, we've grabbed some dependencies and stored them in variables and then defined a component. The `Link` component is exactly what you think it is, a link to another route. You can think of it as `data-ui-sref` in angular or even an `href` in plain 'ol HTML.
 
-Awesome! We now have a header showing up! Let's click on the `React Todos` link. It should route to your `TodosContainer`.
+Awesome! We now have a header showing up! Click between the `Home` and `Todos` links. It should route to your `Home` and `TodosContainer` components.
 
 Before moving on, let's refactor so all our routes live neatly squared away in a separate file:
 
 ```bash
-mkdir config/
-touch config/routes.js
+mkdir src/config/
+touch src/config/routes.js
 ```
 
 In your `config/routes.js` file, copy and paste the routes from your `App` component:
