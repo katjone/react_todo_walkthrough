@@ -59,6 +59,28 @@ $ touch src/containers/TodosContainer.js
 ```
 We will go over why `TodosContainer` is in a different `src/containers/` directory, vs the `src/components/` directory we've already created.
 
+Now that you've created those files, make sure to add a simple React component inside each of them.
+
+<details><summary>Example of what that simple React component might look like:</summary>
+  
+```js
+import React, { Component } from 'react';
+
+class Home extends Component {
+  render() {
+    return (
+      <h2>
+        this is home
+      </h2>
+    );
+  }
+}
+
+export default Home;
+```
+  
+</details>
+
 > Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly braces, it would have grabbed all of `react-router-dom`'s functionality. Check out the [react-router-dom source code](https://github.com/reactjs/react-router-dom) and we can clearly see the Route is a module within react-router-dom
 
 
