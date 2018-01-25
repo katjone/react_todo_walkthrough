@@ -5,6 +5,7 @@ Deleting will work similarly with regard to passing state. Let's update the `Tod
 ```js
 class Todo extends Component {
   constructor() {
+    super();
     this.deleteClickedTodo = this.deleteClickedTodo.bind(this);
   }
   render(){
