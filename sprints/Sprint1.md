@@ -15,12 +15,14 @@ $ touch src/config/routes.js
 Let's fill in the contents our `routes.js` file:
 
 ```js
-import React from 'react'
-import {Route} from 'react-router'
-import App from '../App'
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import App from '../App';
 
 export default (
-  <Route path='/' component={App}/>
+    <Switch>
+       <Route exact path='/' component={App}/>
+    </Switch>
 )
 ```
 
@@ -35,13 +37,14 @@ Great, we've defined out routes, but it's not going to do anything because nothi
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Router, browserHistory} from 'react-router'
-import routes from './config/routes.js'
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './config/routes';
 
-ReactDOM.render(
-  <Router routes={routes} history={browserHistory}/>,
-  document.getElementById('root')
-);
+ReactDOM.render((
+  <BrowserRouter>
+  	{ Routes }
+  </BrowserRouter>
+), document.getElementById('root'))
 ```
 
 Great, we should now be able to see hello world show up!
@@ -61,8 +64,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <h1>Hello, and welcome! I am a heading tag in App.js! Have a great day!</h1>
-      <Header />
+        <Header />
+        <h1>Hello, and welcome! I am a heading tag in App.js! Have a great day!</h1>
       </div>
     );
   }
@@ -83,8 +86,8 @@ $ touch src/components/Header.js
 In `src/components/Header.js`:
 
 ```js
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Header extends Component{
   render(){
