@@ -136,8 +136,8 @@ In your `config/routes.js` file, copy and paste the routes from your `App` compo
 ```js
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Todos from './components/TodosContainer';
+import Home from '../components/Home';
+import TodosContainer from '../components/TodosContainer';
 
 export default (
 	<Switch>
