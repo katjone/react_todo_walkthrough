@@ -79,6 +79,9 @@ constructor() {
     ... your existing code here ...
     this.editClickedTodo = this.editClickedTodo.bind(this);
 }
+deleteClickedTodo() {
+    ...
+}
 editClickedTodo() {
     this.props.onEditTodo(this.props.todo)
 }
