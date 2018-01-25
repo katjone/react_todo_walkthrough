@@ -109,7 +109,14 @@ How are we passing in the corresponding `todo` id back up to `TodosContainer`? T
 It's being passed an argument to a function that **is defined in** and **trickles down from** `TodosContainer`, to here, in `components/Todo.js`:
 
 ```js
-<span onClick={() => this.props.onEditTodo(this.props.todo)}>
+<span onClick={this.props.editClickedTodo}>
+
+which calls 
+
+
+editClickedTodo() {
+    this.props.onEditTodo(this.props.todo)
+}
 ```
 
 Elsewhere, over in `containers/TodosContainer.js`:
@@ -122,10 +129,10 @@ render(){
       <Todos
         todos={this.state.todos}
         editingTodoId={this.state.editingTodoId}
-        onEditTodo={this.editTodo.bind(this)}
-        onDeleteTodo={this.deleteTodo.bind(this)} />
+        onEditTodo={this.editTodo}
+        onDeleteTodo={this.deleteTodo} />
       <CreateTodoForm
-        createTodo={this.createTodo.bind(this)} />
+        createTodo={this.createTodo} />
     </div>
   )
 }
@@ -173,10 +180,10 @@ class TodoForm extends Component {
   render(){
     return (
       <div className='todoForm'>
-        <form onSubmit={e => this.onSubmit(e)}>
+        <form onSubmit={ this.onSubmit }>
           <input
             autoFocus={this.props.autoFocus}
-            onChange={e => this.onChange(e)}
+            onChange={ this.onChange }
             placeholder='Write a todo here ...'
             type='text'
             value={(this.state && this.state.todo) || ''} />
