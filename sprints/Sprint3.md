@@ -192,10 +192,10 @@ Every component in react undergoes a component lifecycle. There are several "hoo
 
 You might be asking yourself: "Wait, why are we getting the data after the components already been rendered?" ([Andy did too](http://stackoverflow.com/questions/39338464/reactjs-why-is-the-convention-to-fetch-data-on-componentdidmount))
 
-That's because a re-render will always happen because fetching data happens asynchronously. Here's the [Facebook recommendation](https://facebook.github.io/react/tips/initial-ajax.html)
+That's because a re-render will always happen because fetching data happens asynchronously. Here's the [Facebook recommendation](https://reactjs.org/docs/react-component.html#componentwillmount)
 
 ### Passing State from parents to children
-How have we passed state? What do we mean by state with reference to a react component? The state of the `TodosContainer` is simple, the todos. How does each individual todo know about the todo they need to render? From the state of the most parent container, `TodosContainer`
+How have we passed state? What do we mean by state with reference to a react component? The state of the `TodosContainer` is simple, the todos. How does each individual todo know about the todo they need to render? From the state of the most parent container, `TodosContainer`.
 
 If we take a look at the `props` being passed from one component to the next, we can clearly see the chain of how information was passed.
 
