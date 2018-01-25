@@ -58,9 +58,9 @@ render(){
   return (
     <div className='createForm todoForm'>
       <h2>Create Todo Here!</h2>
-      <form onSubmit={event => this.onFormSubmit(event)}>
+      <form onSubmit={ this.onFormSubmit }>
         <input
-          onChange={event => this.onInputChange(event)}
+          onChange={ this.onInputChange }
           placeholder='Write a todo here ...'
           type='text'
           value={this.state.todo} />
@@ -115,7 +115,11 @@ In `src/containers/TodosContainer.js`:
 // At the top import the component
 import CreateTodoForm from '../components/CreateTodoForm'
 
-// adding rest of code to container, more code above
+...
+constructor() {
+  ... your existing code here...
+  this.createTodo = this.createTodo.bind(this);
+}
 createTodo(todo) {
     let newTodo = {
         body: todo,
@@ -133,14 +137,14 @@ render(){
       <Todos
         todos={this.state.todos} />
       <CreateTodoForm
-        createTodo={this.createTodo.bind(this)}
+        createTodo={ this.createTodo }
         />
     </div>
   )
 }
 ```
 
-We see that we pass the `createTodo` function of THIS container component TO the `CreateTodoForm` component. We have to `bind(this)` so that `this` is bound to the container component.
+We see that we pass the `createTodo` function of THIS container component TO the `CreateTodoForm` component. We have to `bind(this)` in the `constructor` function so that `this` is bound to the container component.
 
 In the actual `createTodo` function. We can see that we construct everything we need about a todo in an object and store it in a variable. We then pass that object to a `.create` method on our `TodoModel` that ... hasn't been defined yet. Let's define it now. In `src/models/Todo.js`:
 
