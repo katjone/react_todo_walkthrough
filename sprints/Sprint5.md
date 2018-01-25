@@ -42,6 +42,14 @@ let todos = this.props.todos.map( (todo) => {
 Looks like it's not defined here either but passed yet again from a parent container. Finally in the `src/containers/TodosContainer.js`:
 
 ```js
+constructor() {
+  super();
+  this.state = {
+    todos: []
+  }
+  this.createTodo = this.createTodo.bind(this);
+  this.deleteTodo = this.deleteTodo.bind(this);
+}
 deleteTodo(todo) {
     TodoModel.delete(todo).then((res) => {
         let todos = this.state.todos.filter(function(todo) {
@@ -55,9 +63,9 @@ render(){
     <div className="todosComponent">
       <Todos
         todos={this.state.todos}
-        onDeleteTodo={this.deleteTodo.bind(this)} />
+        onDeleteTodo={this.deleteTodo} />
       <CreateTodoForm
-        createTodo={this.createTodo.bind(this)}
+        createTodo={this.createTodo}
         />
     </div>
   )
