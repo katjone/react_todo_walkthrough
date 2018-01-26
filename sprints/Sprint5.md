@@ -8,10 +8,10 @@ class Todo extends Component {
     super();
     this.deleteClickedTodo = this.deleteClickedTodo.bind(this);
   }
+  deleteClickedTodo() {
+    this.props.onDeleteTodo(this.props.todo);
+  }
   render(){
-    deleteClickedTodo() {
-      this.props.onDeleteTodo(this.props.todo);
-    }
     return(
       <p data-todos-index={this.props.todo.id}>
         <span>{this.props.todo.body}</span>
