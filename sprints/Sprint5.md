@@ -76,7 +76,7 @@ Before we talk about the above code, lets look at what delete looks like in our 
 
 ```js
 static delete(todo){
-  let request = axios.delete(`https://super-crud.herokuapp.com/todos/${todo._id}`)
+  let request = axios.delete(`https://super-crud-api.herokuapp.com/api/todos/${todo._id}`)
   return request
 }
 ```
