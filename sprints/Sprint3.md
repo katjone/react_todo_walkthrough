@@ -8,14 +8,14 @@ $ mkdir src/models
 $ touch src/models/Todo.js
 ```
 
-Now in `src/models/Todo.js`, we are going to use our beloved super-crud API endpoint of todos to get some data (you can check out the raw json at https://super-crud-api.herokuapp.com/todos):
+Now in `src/models/Todo.js`, we are going to use our beloved super-crud API endpoint of todos to get some data (you can check out the raw json at https://super-crud-api.herokuapp.com/api/todos):
 
 ```js
 import axios from 'axios'
 
 class TodoModel {
   static all(){
-    let request = axios.get("https://super-crud-api.herokuapp.com/todos")
+    let request = axios.get("https://super-crud-api.herokuapp.com/api/todos")
     return request
   }
 }
