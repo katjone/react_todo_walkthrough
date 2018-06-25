@@ -150,7 +150,7 @@ In the actual `createTodo` function. We can see that we construct everything we 
 
 ```js
 static create(todo) {
-  let request = axios.post("https://super-crud.herokuapp.com/todos", todo)
+  let request = axios.post("https://super-crud-api.herokuapp.com/api/todos", todo)
   return request
 }
 ```
