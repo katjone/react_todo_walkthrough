@@ -241,7 +241,7 @@ In `models/Todo.js` add our method:
 
 ```js
 static update(todoId, todoBody) {
-    let request = axios.put(`https://super-crud-api.herokuapp.com/todos/${todoId}`, {
+    let request = axios.put(`https://super-crud-api.herokuapp.com/api/todos/${todoId}`, {
         body: todoBody
     })
     return request
