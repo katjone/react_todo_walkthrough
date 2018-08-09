@@ -81,7 +81,7 @@ export default Home;
   
 </details>
 
-> Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly braces, it would have grabbed all of `react-router-dom`'s functionality. Check out the [react-router-dom source code](https://github.com/reactjs/react-router-dom) and we can clearly see the Route is a module within react-router-dom
+> Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly braces, it would have grabbed all of `react-router-dom`'s functionality. Check out the [react-router-dom source code](https://github.com/ReactTraining/react-router/tree/master/packages/react-router/docs/api) and we can clearly see the Route is a module within react-router-dom
 
 
 Great, we should now be able to see our `Home` component's "I am the Home page" show up on `localhost:3000`! Going to `localhost:3000/todos` should show "I am the TodosContainer page".
