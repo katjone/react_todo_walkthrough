@@ -87,7 +87,7 @@ editClickedTodo() {
 }
 render(){
     return(
-      <p data-todos-index={this.props.todo.id}>
+      <span data-todos-index={this.props.todo.id}>
         <span onClick={ this.editClickedTodo }>
           {this.props.todo.body}
         </span>
@@ -97,7 +97,7 @@ render(){
           onClick={ this.deleteClickedTodo }>
             (X)
         </span>
-      </p>
+      </span>
     )
   }
 ```
