@@ -11,13 +11,13 @@
 
 /* Clearfix for list items */
 li:after {
-     visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
-     }
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+    }
 li { display: inline-block; }
 /* start commented backslash hack \*/
 * html li { height: 1%; }
@@ -29,17 +29,23 @@ html {
 }
 
 body {
-  background-color: #eee;
+  background-image: url('images/grass.jpg');
+  background-size: cover;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   color: #666;
 }
 
-a {
+a  {
+  color: #95a5a6;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-transform: uppercase;
   text-decoration: none;
-  color: black;
+  display: inline-block;
+  line-height: 2;
+  cursor: pointer;
 }
-
 /* ------------------------------------------------
   C O N T A I N E R   S T Y L E S
 ---------------------------------------------------*/
@@ -78,6 +84,10 @@ h1 {
   background-color: #303030;
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+}
 
 
 /* ------------------------------------------------
@@ -145,7 +155,7 @@ ul input[type="checkbox"] {
   float: left;
 }
 
-.completed .item {
+.completed {
   text-decoration: line-through;
   color: #bebebe;
 }
