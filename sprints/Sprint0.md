@@ -5,7 +5,7 @@ Now let's create the react app. We're going to be using the library `react-route
 ```bash
 $ create-react-app my-react-todo
 $ cd my-react-todo
-$ npm install react-router-dom
+$ npm i react-router-dom
 $ npm start
 ```
 
