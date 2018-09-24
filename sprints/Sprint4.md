@@ -174,8 +174,8 @@ We pass `createTodo` from the container as `props`. In `src/containers/TodosCont
 ```js
 constructor() {
   super();
-  this.createTodo = this.createTodo.bind(this);
 }
+
 render(){
   return (
     <div className="todosComponent">
