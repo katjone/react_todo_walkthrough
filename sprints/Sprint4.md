@@ -173,7 +173,7 @@ We pass `createTodo` from the container as `props`. In `src/containers/TodosCont
 
 ```js
 constructor() {
-  super();
+  super(); 
 }
 
 render(){
