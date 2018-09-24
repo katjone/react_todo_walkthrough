@@ -214,4 +214,4 @@ export default App;
 
 Make sure your routes still work, before moving on.
 
-Great! Now, let's talk about [Sprint 2: Containers](sprints/Sprint2.md)
+Great! Now, let's talk about [Sprint 2: Containers](Sprint2.md)
