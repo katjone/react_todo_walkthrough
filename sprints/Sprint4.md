@@ -15,15 +15,13 @@ class CreateTodoForm extends Component {
     this.state = {
       todo: ''
     }
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
-  onInputChange(event){
+  onInputChange = (event) => {
     this.setState({
       todo: event.target.value
     })
   }
-  onFormSubmit(event){
+  onFormSubmit = (event) => {
     event.preventDefault()
     let todo = this.state.todo
     this.props.createTodo(todo)
@@ -83,7 +81,7 @@ Similarly when the `input` is changed we run `.onInputChange`.
 Let's take a look at the `onInputChange` function first:
 
 ```js
-onInputChange(event){
+onInputChange = (event) => {
   this.setState({
     todo: event.target.value
   })
@@ -95,7 +93,7 @@ Basically whenever this input changes, we're going to set the state of this comp
 `onFormSubmit`:
 
 ```js
-onFormSubmit(event){
+onFormSubmit = (event) => {
   event.preventDefault()
   let todo = this.state.todo
   this.props.createTodo(todo)
@@ -116,11 +114,8 @@ In `src/containers/TodosContainer.js`:
 import CreateTodoForm from '../components/CreateTodoForm'
 
 ...
-constructor() {
-  ... your existing code here...
-  this.createTodo = this.createTodo.bind(this);
-}
-createTodo(todo) {
+
+createTodo = (todo) => {
     let newTodo = {
         body: todo,
         completed: false
@@ -144,18 +139,18 @@ render(){
 }
 ```
 
-We see that we pass the `createTodo` function of THIS container component TO the `CreateTodoForm` component. We have to `bind(this)` in the `constructor` function so that `this` is bound to the container component.
+We see that we pass the `createTodo` function of THIS container component TO the `CreateTodoForm` component. Since we are using arrow functions instead of traditional function definitions we are not bound to a `this` inside our methods.  The `this` inside the methods actually refers to the context of the component. 
 
 In the actual `createTodo` function. We can see that we construct everything we need about a todo in an object and store it in a variable. We then pass that object to a `.create` method on our `TodoModel` that ... hasn't been defined yet. Let's define it now. In `src/models/Todo.js`:
 
 ```js
 static create(todo) {
-  let request = axios.post("https://super-crud-api.herokuapp.com/api/todos", todo)
+  let request = axios.post(endPoint, todo)
   return request
 }
 ```
 
-Using axios, we create the todo. In the promise, we fetch all the todos and set the state to encapsulates those `todos` from the `res`ponse.
+Using axios, we create the `todo`. In the promise, we fetch all the `todos` and set the state to encapsulates those `todos` from the response.
 
 ## Backtrack - How did we pass state from child to parent?
 

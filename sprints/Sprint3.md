@@ -172,7 +172,7 @@ constructor(){
 }
 ```
 
-This is just like `__init__` in python(only a bit different). `constructor()` is basically a function that invokes when an instance of our class gets initialized. When we call `super()` were basically saying invoke the same `constructor` function that the React library defines for their `constructor`. In addition to that initialize a state for this component in which todos is a property and set its value as an empty array. We can then set the state any other time in our application using `.setState()`.
+This is just like `__init__` in python(only a bit different). `constructor()` is basically a function that invokes when an instance of our class gets initialized. When we call `super()` we're basically saying invoke the same `constructor` function that the React library defines for their `constructor`. In addition to that initialize a state for this component in which `todos` is a property and set its value as an empty array. We can then set the state any other time in our application using `.setState()`.
 
 ```js
 fetchData(){
@@ -185,7 +185,7 @@ fetchData(){
 }
 ```
 
-This function leverages our model to retrieve our todos from our backend. In the promise of that request we set the state of this container component to have todos be the value returned from the response. Any time `setState` is invoked the component re-renders.
+This function leverages our model to retrieve our `todos` from our backend. In the promise of that request we set the state of this container component to have `todos` be the value returned from the response. Any time `setState` is invoked the component re-renders.
 
 ```js
 componentDidMount(){
