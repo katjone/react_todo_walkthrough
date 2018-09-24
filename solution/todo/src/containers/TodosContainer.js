@@ -96,23 +96,14 @@ class TodosContainer extends Component {
         if(todo.completed === true ){
           console.log("bye!")
           TodoModel.delete(todo)
-        } else {
-          return true
         }
+          return true
         
       })
       this.setState({
         todos: filteredTodos
       })
-      // filteredTodos
-      // .forEach( (todo, idx) => {
-      //   console.log("IN FOR EACH")
-      //   TodoModel.delete(todo).then(res => {
-      //     console.log(res.data)
-      //     let todos = this.state.todos
-      //     todos = todos.filter( todo => todo.completed === false )
-      //     this.setState({ todos: todos})
-      // })
+
   }
   
   render(){

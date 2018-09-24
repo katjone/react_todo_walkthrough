@@ -1,6 +1,6 @@
-## Sprint 2: Containers
+# Sprint 2: Containers
 
-Writing a container is going to feel very similar to writing just another component. Remember that  React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the business logic surrounding a component's state to a container component. We're going to put all that logic in this container. It will start out very similarly to our `Header` component, but end up much more complex.
+Writing a container is going to feel very similar to writing just another component. Remember that React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the *business logic* surrounding a component's state to a container component. We're going to put all that logic in this container. It will start out very similarly to our `Header` component, but end up much more complex.
 
 Let's revise our `src/containers/TodosContainer.js` and replace the dummy text we had before with the following:
 
@@ -22,60 +22,226 @@ export default TodosContainer
 
 ### PAUSE!
 
-Everything up to this point, is most of what you need to know about using react for a website NOT using a back end. Just add css through index.css and you're good to go! Here's some basic style:
+Everything up to this point is most of what you need to know about using react for a simple website NOT using a back-end.  We can still access our originating `index.html` page to include cdn links.  Lets add two fonts from Google's Fonts API. Add this above the other `<link>` tags in the `<head>` tag
+
+```html
+
+<!-- in public/index.html: -->
+  <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,600,400' rel='stylesheet' type='text/css'>
+```
+
+
+Just add css through `index.css` and you're good to go! Here's some basic style:
 
 ```css
+/* ------------------------------------------------
+  G L O B A L  S T Y L E S
+---------------------------------------------------*/
+/* basic reset */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+/* Clearfix for list items */
+li:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+    }
+li { display: inline-block; }
+/* start commented backslash hack \*/
+* html li { height: 1%; }
+li { display: block; }
+/* close commented backslash hack */
+
+html {
+  font-size: 1em; /* 16 px */
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Brush Script MT", cursive;
+  background-color: #eee;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #666;
 }
 
-header, .todos {
-  text-align: center
+a  {
+  color: #95a5a6;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 2;
 }
-
-.todosContainer {
+/* ------------------------------------------------
+  C O N T A I N E R   S T Y L E S
+---------------------------------------------------*/
+.container {
   width: 60%;
-  margin: auto;
+  max-width: 600px;
+  min-width: 500px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 
-h2 {
-  padding-bottom: .5em;
-  margin-bottom: .5em;
+h1 {
+    font-family: 'Rokkitt', sans-serif;
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
 }
 
-.incomplete h2{
-  border-bottom: 3px solid red;
+.btn {
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    padding: 1.018em 1.2em;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    font-size: 0.8em;
+    text-align: center;
+  background-color: #444;
+  cursor: pointer;
 }
 
-h1, h2{
-  font-family: "Brush Script MT", cursive;
+.btn:hover {
+  background-color: #303030;
 }
 
-p {
-  font-family: "Brush Script MT", cursive;
-  font-size: 2em;
+nav {
+  display: flex;
+  justify-content: space-around;
 }
 
-.todoForm {
-  clear:both;
+
+/* ------------------------------------------------
+  F O R M   S T Y L E S
+---------------------------------------------------*/
+header + form {
+  padding: 2rem 0;
+}
+
+input[type="text"] {
+    height: 41px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    padding: 0 1.2rem;
+    width: 75%;
+    margin-right: 2%;
+    font-size: 0.813em;
+}
+
+form .btn {
+  width: 22%;
+  padding: 1.018em 0;
+}
+
+
+/* ------------------------------------------------
+  L I S T   S T Y L E S
+---------------------------------------------------*/
+ul {
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  font-size: 0.875em;
+  padding: 1.2em 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+li a {
+  color: #95a5a6;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  margin-left: 2em;
+  float: right;
+  text-decoration: none;
+  line-height: 2;
+}
+
+li:hover a:hover {
+  text-decoration: underline;
+}
+
+.item {
+  margin-left: 10px;
+  float: left;
+  display: block;
+}
+
+ul input[type="checkbox"] {
+  float: left;
+}
+
+.completed .item {
+  text-decoration: line-through;
+  color: #bebebe;
+}
+
+/* ul input[type="text"] {
+  width: 80%;
+}
+ */
+/* ------------------------------------------------
+  C O U N T   W R A P P E R
+---------------------------------------------------*/
+.count-wrapper {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 1.5em;
   text-align: center;
 }
 
-span.deleteButton, span.toggleButton {
-  padding-left: 1em;
+.count-wrapper p {
+  -webkit-font-smoothing: antialiased;
+  color: #95a5a6;
+  font-size: .8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 0 1.2em;
 }
 
-.deleteButton{
-  color: red;
+.count-wrapper span {
+  color: #777;
 }
 
-.createForm {
-  padding-top: 3em;
-  padding-bottom: 3em;
-  margin: auto;
-  width: 58%;
+.count-wrapper .btn {
+  margin-right: 1em;
 }
 
+.delete {
+  background-color: #e74c3c;
+}
+
+.delete:hover {
+  background-color: #c0392b
+}
+
+
+
+/* ------------------------------------------------
+  C O U N T   W R A P P E R
+---------------------------------------------------*/
+@media only screen and (max-width: 817px) {
+  
+}
 ```
+
+
+Now on to [Sprint 3: Fetching data with Axios](sprints/Sprint3.md)

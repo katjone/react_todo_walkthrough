@@ -30,7 +30,9 @@ html {
 
 body {
   background-image: url('images/grass.jpg');
-  background-size: cover;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: fill;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   color: #666;

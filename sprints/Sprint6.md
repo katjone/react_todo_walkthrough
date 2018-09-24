@@ -2,6 +2,8 @@
 
 ### Implementing Edit
 
+To update a `todo` in our database we will need to initiate a pre-filled form that contains that specific data.  Once the user has updated the text in the form, they can click a button to initiate a save. The actual save button will trigger the database call to update.  
+
 In `containers/TodosContainer.js`:
 
 ```js
@@ -92,11 +94,11 @@ render(){
           {this.props.todo.body}
         </span>
         { this.props.editingTodoId === this.props.todo._id ? `${this.props.todo.body} is being edited` : '' }
-        <span
-          className='deleteButton'
+        <a
+          className='remove'
           onClick={ this.deleteClickedTodo }>
-            (X)
-        </span>
+            Remove
+        </a>
       </span>
     )
   }

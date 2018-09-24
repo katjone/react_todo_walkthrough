@@ -33,15 +33,15 @@ class CreateTodoForm extends Component {
   }
   render(){
     return (
-      <div className='createForm todoForm'>
-        <h2>Create Todo Here!</h2>
-        <form onSubmit={ this.onFormSubmit }>
-          <input
-            onChange={ this.onInputChange }
-            placeholder='Write a todo here ...'
-            type='text'
-            value={this.state.todo} />
-          <button type='submit'>Create Todo!</button>
+      <div >
+        <form onSubmit={ this.onFormSubmit } id="taskForm">
+          <input  
+            onChange={ this.onInputChange } 
+            type="text" id="newItemDescription" 
+            placeholder="What do you need to do?" 
+            value={this.state.todo}
+          />
+          <button type="submit" id="addTask" className="btn">Add Todo</button>
         </form>
       </div>
     )
@@ -56,15 +56,15 @@ Whoa.. pauuuuseee. Let's take a look. First let's look at what we're rendering:
 ```js
 render(){
   return (
-    <div className='createForm todoForm'>
-      <h2>Create Todo Here!</h2>
-      <form onSubmit={ this.onFormSubmit }>
-        <input
-          onChange={ this.onInputChange }
-          placeholder='Write a todo here ...'
-          type='text'
-          value={this.state.todo} />
-        <button type='submit'>Create Todo!</button>
+    <div >
+      <form onSubmit={ this.onFormSubmit } id="taskForm">
+        <input  
+          onChange={ this.onInputChange } 
+          type="text" id="newItemDescription" 
+          placeholder="What do you need to do?" 
+          value={this.state.todo}
+        />
+        <button type="submit" id="addTask" className="btn">Add Todo</button>
       </form>
     </div>
   )
@@ -184,14 +184,16 @@ constructor() {
 render(){
   return (
     <div className="todosComponent">
-      <Todos
-        todos={this.state.todos} />
       <CreateTodoForm
         createTodo={ this.createTodo }
         />
+      <Todos
+        todos={this.state.todos} />
     </div>
   )
 }
 ```
 
 The argument passed in at the `CreateTodoForm` level(child) was state from that component. And now it updates state at the `TodosContainer` level(parent).
+
+Sweet! Lets go to [Sprint 5: Deleting Todos](sprints/Sprint5.md)

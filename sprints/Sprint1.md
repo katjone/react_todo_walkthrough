@@ -1,8 +1,8 @@
-## Sprint 1: React Router
+# Sprint 1: React Router
 
-We're going to use React Router today to introduce it as a concept. However, it isn't strictly necessary for this application. We're really just going for exposure here. There's a lot to learn about react router and we'll just be scratching the surface. If you want to dive deeper, checkout [this tutorial](https://github.com/reactjs/react-router-tutorial)
+We're going to use React Router to handle our views. However, it isn't necessary for this application. We're really just going for exposure here. There's a lot to learn about react router and we'll just be scratching the surface. If you want to dive deeper, checkout [this tutorial](https://github.com/reactjs/react-router-tutorial)
 
-We need React Router in the same way that we needed Angular routers. We need a way to link to various urls to components in our application. Because our application will be a SPA, we still want to preserve different application-states via the url. This Todo app's application-states (not to be confused with component state) will just be the root url and a url to all todos(`/` and `/todos`)
+We need a way to link to various urls to components in our application. Because our application will be a SPA (Single Page Application,) we still want to preserve different application-states via the url. This Todo app's application-states (not to be confused with component state) will just be the root url and a url to all todos(`/` and `/todos`)
 
 ### Creating Routes
 Routes in React are just React components as well! Since we've installed the `react-router-dom` dependency, we'll start by wrapping our `App` Component in a `BrowserRouter` component available to us from `react-router-dom`. 
@@ -61,16 +61,38 @@ We will go over why `TodosContainer` is in a different `src/containers/` directo
 
 Now that you've created those files, make sure to add a simple React component inside each of them.
 
-<details><summary>Example of what that simple React component might look like:</summary>
+<details><summary>Example of what that simple `Home.js` React component might look like:</summary>
   
 ```js
+// components/Home.js
 import React, { Component } from 'react';
 
 class Home extends Component {
   render() {
     return (
       <h2>
-        this is home
+        I am the Home page
+      </h2>
+    );
+  }
+}
+
+export default Home;
+```
+  
+</details>
+
+<details><summary>Example of what that simple `TodosContainer.js` React component might look like:</summary>
+  
+```js
+// containers/Home.js
+import React, { Component } from 'react';
+
+class Home extends Component {
+  render() {
+    return (
+      <h2>
+        I am the TodosContainer page
       </h2>
     );
   }
@@ -135,6 +157,7 @@ class Header extends Component{
   render(){
     return (
       <header>
+      	<h1>ToDo</h1>
         <Link to={'/'}>Home</Link>
         <Link to={'/todos'}>Todos</Link>
       </header>
@@ -145,7 +168,7 @@ class Header extends Component{
 export default Header
 ```
 
-In this file, we've grabbed some dependencies and stored them in variables and then defined a component. The `Link` component is exactly what you think it is, a link to another route. You can think of it as `data-ui-sref` in angular or even an `href` in plain 'ol HTML.
+In this file, we've grabbed some dependencies and stored them in variables and then defined a component. The `Link` component is exactly what you think it is, a link to another route. You can think of it as an `href` in plain 'ol HTML.
 
 Awesome! We now have a header showing up! Click between the `Home` and `Todos` links. It should route to your `Home` and `TodosContainer` components.
 
@@ -195,4 +218,4 @@ export default App;
 
 Make sure your routes still work, before moving on.
 
-Great! Now, let's talk about containers.
+Great! Now, let's talk about [Sprint 2: Containers](sprints/Sprint2.md)

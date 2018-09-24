@@ -1,4 +1,4 @@
-## Sprint 0: Getting Started
+# Sprint 0: Getting Started
 
 Now let's create the react app. We're going to be using the library `react-router-dom` for this, so we will need to install that as well.
 
@@ -44,3 +44,5 @@ export default App;
 ```
 
 > Hooray for automatic rerendering on save! If we just switch over to our browser we'll automatically see our updates.
+
+Now on to [Sprint 1: React Router setup](Sprint1.md)

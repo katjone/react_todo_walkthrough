@@ -1,9 +1,9 @@
-## Sprint 3: Fetching Data with Axios
+# Sprint 3: Fetching Data with Axios
 
-React actually isn't as full featured as say AngularJS or BackboneJS. It relies on third party libraries to fetch data. Today, we'll be using a library called [Axios](https://github.com/mzabriskie/axios), a promise based HTTP client for the browser and node. Let's install the module now and also create the folder/file that will contain our database logic:
+React actually isn't as full featured as say AngularJS or BackboneJS. It relies on third party libraries to fetch data. Today, we'll be using a library called [Axios](https://github.com/mzabriskie/axios), a promise based HTTP client for the browser and node. This replaces the need for JQuery and Ajax. Let's install the module now and also create the folder & file that will contain our database logic:
 
 ```bash
-$ npm install axios --save
+$ npm i axios 
 $ mkdir src/models
 $ touch src/models/Todo.js
 ```
@@ -23,9 +23,9 @@ class TodoModel {
 export default TodoModel
 ```
 
-The Axios API is awesome! It's pretty intuitive! When we use the `all` method on our `TodoModel`, it will make a get request to our API for all todos. We return the request so that we can chain promises to it.
+The Axios API is awesome & intuitive! When we use the `all` method on our `TodoModel`, it will make a get request to our API for *all* todos. We return the request so that we can chain promises to it.
 
-Note also that `all()` is a static method. What does this mean? A static method can be called without there being an **instance** of the class containing the static method. This will allow us to call `all()` in the following way (without ***instantiating*** the class with new):
+Note also that `all()` is a static method. What does this mean? A **static** method can be called without there being an **instance** of the class containing the **static** method. This will allow us to call `all()` in the following way (without ***instantiating*** the class with new):
 
 ```js
 let todos = TodoModel.all()
@@ -62,10 +62,10 @@ export default TodosContainer
 
 Awesome, we can see the response from our database as soon as the page loads, we know it's working! However, its completely in the wrong spot and we don't have anything we're passing todos to... yet!
 
-Now that we can get our data, let's code how we present that data. It'll be a bit before we connect these pieces and actually see our todos in our app, but just hold on we'll get there!
+Now that we can get our data, let's code how we present that data. It'll be a bit before we connect these pieces and actually see our todos in our app, but just hold on, we'll get there!
 
 ### Rendering A Todo
-Let's start at the bottom and bubble up. It'll be nice if each todo we're its own component. To follow FIRST(Focused Independent Reusable Small Testable). Let's create `src/components/Todo.js` and put the following in it:
+Let's start at the bottom and bubble up. It would be nice if each `todo` element had its own component to follow FIRST(Focused Independent Reusable Small Testable) principles. Let's create `src/components/Todo.js` and put the following in it:
 
 ```js
 import React, {Component} from 'react'
@@ -73,9 +73,9 @@ import React, {Component} from 'react'
 class Todo extends Component {
   render(){
     return(
-      <p data-todos-index={this.props.todo.id}>
+      <li data-todos-index={this.props.todo.id}>
         <span>{this.props.todo.body}</span>
-      </p>
+      </li> 
     )
   }
 }
@@ -102,9 +102,9 @@ class Todos extends Component {
       )
     })
     return(
-      <div className="todos">
+      <ul>
         {todos}
-      </div>
+      </ul>
     )
   }
 }
@@ -165,7 +165,7 @@ constructor(){
 }
 ```
 
-This is just like initialize in ruby(only a bit different). `constructor()` is basically a function that invokes when an instance of our class gets initialized. When we call `super()` were basically saying invoke the same `constructor` function that the React library defines for their `constructor`. In addition to that initialize a state for this component in which todos is a property and set its value as an empty array. We can then set the state any other time in our application using `.setState()`.
+This is just like `__init__` in python(only a bit different). `constructor()` is basically a function that invokes when an instance of our class gets initialized. When we call `super()` were basically saying invoke the same `constructor` function that the React library defines for their `constructor`. In addition to that initialize a state for this component in which todos is a property and set its value as an empty array. We can then set the state any other time in our application using `.setState()`.
 
 ```js
 fetchData(){
@@ -223,10 +223,12 @@ In `src/components/Todos.js`:
 In `src/components/Todo.js`:
 
 ```js
-<p data-todos-index={this.props.todo._id}>
-  <span>{this.props.todo.body}</span>
-</p>
+  <li data-todos-index={this.props.todo.id}>
+    <span>{this.props.todo.body}</span>
+  </li> 
 ```
 
 ### PAUSE - Why is this awesome?
 We could stop the lesson here and take this knowledge and build lots of cool things with it. Most of the API's developers have access to are read-only. That said, if we know an endpoint to get data, we now know how to use React to display that data.
+
+Upwards and onwards to [Sprint 4: Creating Todos](sprints/Sprint4.md)
