@@ -35,8 +35,7 @@ class TodoForm extends Component {
         <form className="editor" onSubmit={ this.onSubmit }>
           <input
             autoFocus={this.props.autoFocus}
-            onChange={ this.onChange }
-            
+            onChange={ this.onChange } 
             type='text'
             value={(this.state && this.state.todo) || ''} />
           <button type='submit' className="btn">{this.props.buttonName}</button>

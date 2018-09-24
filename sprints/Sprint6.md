@@ -42,7 +42,7 @@ render(){
         todos={this.state.todos}
         editingTodoId={this.state.editingTodoId}
         onEditTodo={this.editTodo}
-        onDeleteTodo={this.deleteTodo} 
+        onDeleteTodo={this.deleteTodo}
         onUpdateTodo={this.updateTodo} />
       <CreateTodoForm
         createTodo={this.createTodo} />
@@ -54,7 +54,6 @@ render(){
 Why would we add editingTodoId to the container? Why might the container be aware of a ***single*** todo ID, in the context of an edit?
 
 In the `components/Todos.js`, add `editingTodoId` and `onEditTodo` to `<Todo>` props:
-
 
 ```js
 //....
@@ -120,10 +119,11 @@ It's being passed an argument to a function that **is defined in** and **trickle
 
 ```js
 <span onClick={this.props.editClickedTodo}>
+```
 
-which calls 
+which calls
 
-
+```js\
 editClickedTodo() {
     this.props.onEditTodo(this.props.todo)
 }
