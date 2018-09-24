@@ -82,3 +82,6 @@ static delete(todo){
 ```
 
 The `deleteTodo` takes the todo, passed from the child Component of `Todo` up through a chain of references. It deletes it with axios. Upon deletion, all todos are grabbed from the container state and filters out the one deleted, updates the state to have only the remaining todos.
+
+
+And now the final frontier! [Sprint 6: Editing and Updating Todos!](Sprint6.md)

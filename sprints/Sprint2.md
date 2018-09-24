@@ -253,4 +253,4 @@ You'll notice that React errors out! We need to add a background image that our 
 
 The file looks a little wonky but we'll grow up it real nice!
 
-Now on to [Sprint 3: Fetching data with Axios](sprints/Sprint3.md)
+Now on to [Sprint 3: Fetching data with Axios](Sprint3.md)

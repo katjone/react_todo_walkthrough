@@ -231,4 +231,4 @@ In `src/components/Todo.js`:
 ### PAUSE - Why is this awesome?
 We could stop the lesson here and take this knowledge and build lots of cool things with it. Most of the API's developers have access to are read-only. That said, if we know an endpoint to get data, we now know how to use React to display that data.
 
-Upwards and onwards to [Sprint 4: Creating Todos](sprints/Sprint4.md)
+Upwards and onwards to [Sprint 4: Creating Todos](Sprint4.md)
