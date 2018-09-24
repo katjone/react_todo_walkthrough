@@ -61,7 +61,7 @@ We will go over why `TodosContainer` is in a different `src/containers/` directo
 
 Now that you've created those files, make sure to add a simple React component inside each of them.
 
-<details><summary>Example of what that simple `Home.js` React component might look like:</summary>
+Inside the  `components/Home.js` React component add the following code:
   
 ```js
 // components/Home.js
@@ -80,15 +80,13 @@ class Home extends Component {
 export default Home;
 ```
   
-</details>
-
-<details><summary>Example of what that simple `TodosContainer.js` React component might look like:</summary>
+In the `containers/TodosContainer` React component add the following code:
   
 ```js
-// containers/Home.js
+// containers/TodosContainer.js
 import React, { Component } from 'react';
 
-class Home extends Component {
+class TodosContainer extends Component {
   render() {
     return (
       <h2>
@@ -98,10 +96,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default TodosContainer;
 ```
-  
-</details>
 
 > Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly braces, it would have grabbed all of `react-router-dom`'s functionality. Check out the [react-router-dom source code](https://github.com/ReactTraining/react-router/tree/master/packages/react-router/docs/api) and we can clearly see the Route is a module within react-router-dom
 
@@ -120,7 +116,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Todos from './containers/TodosContainer';
+import TodosContainer from './containers/TodosContainer';
 
 class App extends Component {
   render() {
@@ -139,7 +135,7 @@ class App extends Component {
 export default App;
 ```
 
-This will immediately error our code base out, why? (ST-WG)
+This will immediately error our code base out, why?
 
 That's right, we don't actually have a `Header` component defined in our codebase. Let's create it:
 
