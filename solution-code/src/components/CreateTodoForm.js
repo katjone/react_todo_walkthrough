@@ -10,11 +10,13 @@ class CreateTodoForm extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
+  
   onInputChange(event){
     this.setState({
       todo: event.target.value
     })
   }
+
   onFormSubmit(event){
     event.preventDefault()
     let todo = this.state.todo
@@ -23,6 +25,7 @@ class CreateTodoForm extends Component {
       todo: ""
     })
   }
+
   render(){
     return (
       <div >

@@ -7,7 +7,7 @@ class Home extends Component{
   render() {
     return (
       <div>
-        I am a Home component  
+        Welcome to the TODO React Walkthrough! 
       </div>
     )
   }

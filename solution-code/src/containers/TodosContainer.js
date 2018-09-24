@@ -119,7 +119,6 @@ class TodosContainer extends Component {
           markComplete={this.markComplete}
           />
         <TodoDashboard 
-          clearCompleted={this.clearCompleted}
           todoCount={this.state.todoCount} />
 
       </div>
