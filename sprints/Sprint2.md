@@ -5,7 +5,7 @@ Writing a container is going to feel very similar to writing just another compon
 Let's revise our `src/containers/TodosContainer.js` and replace the dummy text we had before with the following:
 
 ```js
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 class TodosContainer extends Component {
   render(){
@@ -22,7 +22,9 @@ export default TodosContainer
 
 ### PAUSE!
 
-Everything up to this point is most of what you need to know about using react for a simple website NOT using a back-end.  We can still access our originating `index.html` page to include cdn links.  Lets add two fonts from Google's Fonts API. Add this above the other `<link>` tags in the `<head>` tag
+Everything up to this point is most of what you need to know about using react for a simple website NOT using a back-end.  From here on out we will be writing code to communicate with our back-end api `super-crud`. 
+
+We can still access our originating `index.html` page to include cdn links.  Lets add two fonts from Google's Fonts API. Add this above the other `<link>` tags in the `<head>` tag
 
 ```html
 
@@ -66,7 +68,10 @@ html {
 }
 
 body {
-  background-color: #eee;
+  background-image: url('images/grass.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: fill;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   color: #666;
@@ -80,6 +85,7 @@ a  {
   text-decoration: none;
   display: inline-block;
   line-height: 2;
+  cursor: pointer;
 }
 /* ------------------------------------------------
   C O N T A I N E R   S T Y L E S
@@ -190,7 +196,7 @@ ul input[type="checkbox"] {
   float: left;
 }
 
-.completed .item {
+.completed {
   text-decoration: line-through;
   color: #bebebe;
 }
@@ -243,5 +249,8 @@ ul input[type="checkbox"] {
 }
 ```
 
+You'll notice that React errors out! We need to add a background image that our `css` file is looking for.  In this repository you'll find an `assets` folder with the image. Move this file into an `images` folder in your `src` folder.
+
+The file looks a little wonky but we'll grow up it real nice!
 
 Now on to [Sprint 3: Fetching data with Axios](sprints/Sprint3.md)
