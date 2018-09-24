@@ -34,7 +34,7 @@ import TodosContainer from './containers/TodosContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Switch>
           <Route exact path='/' component={ Home }/>
           <Route path='/todos' component={ TodosContainer }/>
@@ -121,7 +121,7 @@ import TodosContainer from './containers/TodosContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Header/>
         <Switch>
           <Route exact path='/' component={ Home }/>
@@ -153,9 +153,11 @@ class Header extends Component{
   render(){
     return (
       <header>
-      	<h1>ToDo</h1>
-        <Link to={'/'}>Home</Link>
-        <Link to={'/todos'}>Todos</Link>
+        <h1>ToDo</h1>
+        <nav> 
+          <Link to={'/'}>Home</Link>
+          <Link to={'/todos'}>Todos</Link>
+        </nav>
       </header>
     )
   }
@@ -201,7 +203,7 @@ import MyRoutes from './config/routes';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Header/>
         { MyRoutes }
       </div>

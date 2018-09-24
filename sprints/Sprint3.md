@@ -13,9 +13,11 @@ Now in `src/models/Todo.js`, we are going to use our beloved super-crud API endp
 ```js
 import axios from 'axios'
 
+const endPoint = `https://super-crud-api.herokuapp.com/api/todos`
+
 class TodoModel {
   static all(){
-    let request = axios.get("https://super-crud-api.herokuapp.com/api/todos")
+    let request = axios.get(endPoint)
     return request
   }
 }
@@ -60,7 +62,9 @@ class TodosContainer extends Component {
 export default TodosContainer
 ```
 
-Awesome, we can see the response from our database as soon as the page loads, we know it's working! However, its completely in the wrong spot and we don't have anything we're passing todos to... yet!
+Awesome, we can see the response from our database as soon as the page loads, we know it's working! Notice that the actual `json` we want is stored in the `data` attribute of the response.  This is a standard format for `axios` returns.  
+
+We can now see that everything is working! However, its completely in the wrong spot and we don't have anything we're passing todos to... yet!
 
 Now that we can get our data, let's code how we present that data. It'll be a bit before we connect these pieces and actually see our todos in our app, but just hold on, we'll get there!
 
@@ -94,6 +98,7 @@ import Todo from './Todo'
 
 class Todos extends Component {
   render(){
+
     let todos = this.props.todos.map( (todo) => {
       return (
         <Todo
@@ -101,11 +106,13 @@ class Todos extends Component {
           todo={todo}/>
       )
     })
+
     return(
       <ul>
         {todos}
       </ul>
     )
+    
   }
 }
 
