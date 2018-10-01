@@ -25,7 +25,7 @@ class Todo extends Component {
 }
 ```
 
-We've added an anchor tag with an `remove` in it. When it gets clicked it invokes the `onDeleteTodo` function defined on `props`. That means we need to pass `.onDeleteTodo` as `props` from the parent component of `Todos`. In `src/components/Todos.js`
+We've added an anchor tag with an `remove` in it. When it gets clicked it invokes the `deleteTodo` function defined on `props`. That means we need to pass `.deleteTodo` as `props` from the parent component of `Todos`. In `src/components/Todos.js`
 
 ```js
 let todos = this.props.todos.map( (todo) => {
