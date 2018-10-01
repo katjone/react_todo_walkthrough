@@ -110,56 +110,10 @@ Lets update our `Todo` render to have the `TodoForm` included. We'll also add an
   }
 ```
 
-Phew! Now we can test out our props-flow by clicking on a todo and seeing if we get the `${this.props.todo.body} is being edited` message displayed.
 
-### Breaking it Down:
-
-#### Trickling Down
-
-In `TodosContainer`, a method called `editTodo` is setting the `state` of the `<TodosContainer>` component to include a property called `editingTodoId`. That `state` is then ultimately handed down  to the `<Todo>` component. This state trickles down from `<TodosContainer>` to `<Todo>` as props.
-
-#### Bubbling Up (and then Trickling Back Down again)
-
-How are we passing in the corresponding `todo` id back up to `TodosContainer`? The TodosContainer-state is being updated with a particular `todo` id, which is a `prop` of the `<Todo>` component.
-
-It's being passed an argument to a function that **is defined in** and **trickles down from** `TodosContainer`, to here, in `components/Todo.js`:
-
-```js
-<span onClick={this.props.editClickedTodo}>
-```
-
-which calls
-
-```js
-editClickedTodo = () => {
-    this.props.onEditTodo(this.props.todo)
-}
-```
-
-Elsewhere, over in `containers/TodosContainer.js`:
-
-```js
-render(){
-  return (
-    <div className='TodosContainer'>
-      <h2>This is the Todos Container</h2>
-      <Todos
-        todos={this.state.todos}
-        editingTodoId={this.state.editingTodoId}
-        onEditTodo={this.editTodo}
-        onDeleteTodo={this.deleteTodo} />
-      <CreateTodoForm
-        createTodo={this.createTodo} />
-    </div>
-  )
-}
-```
-
-This certainly the trickiest part of the lesson-- the rest is easy by comparison (still pretty tough, at first!).
 
 ### Replacing the console.log with a Form for editing Todos
 
-The next steps here involve showing a form in place of the `${this.props.todo.body} is being edited` message in `components/Todo.js`.
 
 You should replace that `${this.props.todo.body} is being edited` message with something like this:
 
