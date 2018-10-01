@@ -129,7 +129,7 @@ class TodoForm extends Component {
   onSubmit = (event) => {
     event.preventDefault()
     var todo = this.state.todo
-    this.props.onUpdateTodo(todo)
+    this.props.updateTodo(todo)
     this.setState({
       todo: ""
     })
@@ -137,7 +137,7 @@ class TodoForm extends Component {
 
   render(){
     return (
-      <div className='todoForm'>
+      <div style={this.props.style} className='todoForm'>
         <form onSubmit={ this.onSubmit }>
           <input
             autoFocus={this.props.autoFocus}
@@ -175,10 +175,8 @@ let todos = this.props.todos.map( (todo) => {
     <Todo
       key={todo._id}
       todo={todo}
-      editingTodoId={this.props.editingTodoId}
-      onEditTodo={this.props.onEditTodo}
-      onDeleteTodo={this.props.onDeleteTodo}
-      onUpdateTodo={this.props.onUpdateTodo}
+      deleteTodo={this.props.deleteTodo}
+      updateTodo={this.props.updateTodo}
     />
   )
 })
