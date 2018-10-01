@@ -45,8 +45,6 @@ In `containers/TodosContainer.js`:
   }
 ```
 
-Why would we add editingTodoId to the container? Why might the container be aware of a ***single*** todo ID, in the context of an edit?
-
 In the `components/Todos.js`, add `updateTodo` to `<Todo>` props:
 
 ```js
@@ -103,6 +101,7 @@ Lets update our `Todo` render to have the `TodoForm` included. We'll also add an
           todo={this.props.todo}
           style={this.state.formStyle}
           autoFocus={true}
+          buttonName="Update Todo!"
           updateTodo={this.props.updateTodo} 
           toggleBodyForm={this.toggleBodyForm} />
       </li> 
@@ -110,24 +109,9 @@ Lets update our `Todo` render to have the `TodoForm` included. We'll also add an
   }
 ```
 
-
-
-### Replacing the console.log with a Form for editing Todos
-
-
-You should replace that `${this.props.todo.body} is being edited` message with something like this:
+You will then have to both write the `TodoForm` component and then import it into `components/Todo.js`:
 
 ```js
-<TodoForm
-  autoFocus={true}
-  buttonName="Update Todo!"
-  onUpdateTodo={this.props.onUpdateTodo} />
-```
-
-You will then have to both write that component and then import it into `components/Todo.js`:
-
-```js
-
 //TodoForm.js
 import React, {Component} from 'react'
 
@@ -205,7 +189,7 @@ In `models/Todo.js` add our method:
 
 ```js
   static update(todoId, updateInfo) {
-    let request = axios.put(`${endPoint}${todoId}`, updateInfo)
+    let request = axios.put(`${endPoint}/${todoId}`, updateInfo)
     return request
   }
 ```
