@@ -77,7 +77,7 @@ Before we talk about the above code, lets look at what delete looks like in our 
 
 ```js
   static delete(todo){
-    let request = axios.delete(`${endPoint}${todo._id}`)
+    let request = axios.delete(`${endPoint}/${todo._id}`)
     return request
   }
 ```
