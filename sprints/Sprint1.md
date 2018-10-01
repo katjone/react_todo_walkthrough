@@ -1,8 +1,8 @@
-## Sprint 1: React Router
+# Sprint 1: React Router
 
-We're going to use React Router today to introduce it as a concept. However, it isn't strictly necessary for this application. We're really just going for exposure here. There's a lot to learn about react router and we'll just be scratching the surface. If you want to dive deeper, checkout [this tutorial](https://github.com/reactjs/react-router-tutorial)
+We're going to use React Router to handle our views. However, it isn't necessary for this application. We're really just going for exposure here. There's a lot to learn about react router and we'll just be scratching the surface. If you want to dive deeper, checkout [this tutorial](https://github.com/reactjs/react-router-tutorial)
 
-We need React Router in the same way that we needed Angular routers. We need a way to link to various urls to components in our application. Because our application will be a SPA, we still want to preserve different application-states via the url. This Todo app's application-states (not to be confused with component state) will just be the root url and a url to all todos(`/` and `/todos`)
+We need a way to link to various urls to components in our application. Because our application will be a SPA (Single Page Application,) we still want to preserve different application-states via the url. This Todo app's application-states (not to be confused with component state) will just be the root url and a url to all todos(`/` and `/todos`)
 
 ### Creating Routes
 Routes in React are just React components as well! Since we've installed the `react-router-dom` dependency, we'll start by wrapping our `App` Component in a `BrowserRouter` component available to us from `react-router-dom`. 
@@ -34,7 +34,7 @@ import TodosContainer from './containers/TodosContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Switch>
           <Route exact path='/' component={ Home }/>
           <Route path='/todos' component={ TodosContainer }/>
@@ -61,16 +61,17 @@ We will go over why `TodosContainer` is in a different `src/containers/` directo
 
 Now that you've created those files, make sure to add a simple React component inside each of them.
 
-<details><summary>Example of what that simple React component might look like:</summary>
+Inside the  `components/Home.js` React component add the following code:
   
 ```js
+// components/Home.js
 import React, { Component } from 'react';
 
 class Home extends Component {
   render() {
     return (
       <h2>
-        this is home
+        I am the Home page
       </h2>
     );
   }
@@ -79,7 +80,24 @@ class Home extends Component {
 export default Home;
 ```
   
-</details>
+In the `containers/TodosContainer` React component add the following code:
+  
+```js
+// containers/TodosContainer.js
+import React, { Component } from 'react';
+
+class TodosContainer extends Component {
+  render() {
+    return (
+      <h2>
+        I am the TodosContainer page
+      </h2>
+    );
+  }
+}
+
+export default TodosContainer;
+```
 
 > Something that's weird is that we imported `React` from `'react'` but then we imported `{Route}` from `'react-router-dom'`. What's with the curly braces? In the latter case we're actually only importing a specific module of the `react-router-dom` and name spacing it within `Route` If we had omitted the curly braces, it would have grabbed all of `react-router-dom`'s functionality. Check out the [react-router-dom source code](https://github.com/ReactTraining/react-router/tree/master/packages/react-router/docs/api) and we can clearly see the Route is a module within react-router-dom
 
@@ -98,12 +116,12 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Todos from './containers/TodosContainer';
+import TodosContainer from './containers/TodosContainer';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Header/>
         <Switch>
           <Route exact path='/' component={ Home }/>
@@ -117,7 +135,7 @@ class App extends Component {
 export default App;
 ```
 
-This will immediately error our code base out, why? (ST-WG)
+This will immediately error our code base out, why?
 
 That's right, we don't actually have a `Header` component defined in our codebase. Let's create it:
 
@@ -135,8 +153,11 @@ class Header extends Component{
   render(){
     return (
       <header>
-        <Link to={'/'}>Home</Link>
-        <Link to={'/todos'}>Todos</Link>
+        <h1>ToDo</h1>
+        <nav> 
+          <Link to={'/'}>Home</Link>
+          <Link to={'/todos'}>Todos</Link>
+        </nav>
       </header>
     )
   }
@@ -145,7 +166,7 @@ class Header extends Component{
 export default Header
 ```
 
-In this file, we've grabbed some dependencies and stored them in variables and then defined a component. The `Link` component is exactly what you think it is, a link to another route. You can think of it as `data-ui-sref` in angular or even an `href` in plain 'ol HTML.
+In this file, we've grabbed some dependencies and stored them in variables and then defined a component. The `Link` component is exactly what you think it is, a link to another route. You can think of it as an `href` in plain 'ol HTML.
 
 Awesome! We now have a header showing up! Click between the `Home` and `Todos` links. It should route to your `Home` and `TodosContainer` components.
 
@@ -182,7 +203,7 @@ import MyRoutes from './config/routes';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Header/>
         { MyRoutes }
       </div>
@@ -195,4 +216,4 @@ export default App;
 
 Make sure your routes still work, before moving on.
 
-Great! Now, let's talk about containers.
+Great! Now, let's talk about [Sprint 2: Containers](Sprint2.md)

@@ -1,42 +1,3 @@
-# Sprint 2: Containers
-
-Writing a container is going to feel very similar to writing just another component. Remember that React components should be FIRST: focused, independent, reusable, small, and testable. In order to help keep components slim, a good practice is to move as much of the *business logic* surrounding a component's state to a container component. We're going to put all that logic in this container. It will start out very similarly to our `Header` component, but end up much more complex.
-
-Let's revise our `src/containers/TodosContainer.js` and replace the dummy text we had before with the following:
-
-```js
-import React, { Component } from 'react'
-
-class TodosContainer extends Component {
-  render(){
-    return (
-      <div className='todosContainer'>
-        <h2>This is the todos container</h2>
-      </div>
-    )
-  }
-}
-
-export default TodosContainer
-```
-
-### PAUSE!
-
-Everything up to this point is most of what you need to know about using react for a simple website NOT using a back-end.  From here on out we will be writing code to communicate with our back-end api `super-crud`. 
-
-We can still access our originating `index.html` page to include cdn links.  Lets add two fonts from Google's Fonts API. Add this above the other `<link>` tags in the `<head>` tag
-
-```html
-
-<!-- in public/index.html: -->
-  <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,600,400' rel='stylesheet' type='text/css'>
-```
-
-
-Just add css through `index.css` and you're good to go! Here's some basic style:
-
-```css
 /* ------------------------------------------------
   G L O B A L  S T Y L E S
 ---------------------------------------------------*/
@@ -247,10 +208,3 @@ ul input[type="checkbox"] {
 @media only screen and (max-width: 817px) {
   
 }
-```
-
-You'll notice that React errors out! We need to add a background image that our `css` file is looking for.  In this repository you'll find an `assets` folder with the image. Move this file into an `images` folder in your `src` folder.
-
-The file looks a little wonky but we'll grow up it real nice!
-
-Now on to [Sprint 3: Fetching data with Axios](Sprint3.md)
