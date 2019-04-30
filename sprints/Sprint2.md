@@ -130,6 +130,11 @@ nav {
   justify-content: space-around;
 }
 
+.remove {
+  float: right;
+  cursor: pointer;
+}
+
 
 /* ------------------------------------------------
   F O R M   S T Y L E S
