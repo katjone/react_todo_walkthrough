@@ -18,15 +18,17 @@ In `containers/TodosContainer.js`:
 
   /* deleteTodo = ...  */
 
-  updateTodo = (todoBody, todoId) => {
-    const isUpdatedTodo = todo => {
-        return todo._id === todoId;
+  updateTodo = todo => {
+    const isUpdatedTodo = t => {
+        return t._id === todo._id;
     }
-    TodoModel.update(todoId, todoBody).then((res) => {
-        let todos = this.state.todos
-        todos.find(isUpdatedTodo).body = todoBody.body
-        this.setState({ todos: todos })
-    })
+
+    TodoModel.update(todo)
+        .then((res) => {
+          let todos = this.state.todos;
+          todos.find(isUpdatedTodo).body = todo.body;
+          this.setState({ todos: todos });
+        });
   }
 
   render(){
