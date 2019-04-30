@@ -14,11 +14,11 @@ class Todo extends Component {
     return(
       <li data-todos-index={this.props.todo.id}>
         <span>{this.props.todo.body}</span>
-        <a
+        <span
           className='remove'
           onClick={this.deleteClickedTodo}>
           Remove
-        </a>
+        </span>
       </li> 
     )
   }
