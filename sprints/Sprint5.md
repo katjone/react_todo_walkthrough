@@ -51,7 +51,7 @@ constructor() {
 // After the todo delete response is sent back from the server, we find the corresponding entry for the todo in our todos state array and remove it.
 deleteTodo = (todo) => {
     TodoModel.delete(todo).then((res) => {
-        let todos = this.state.todos.filter(function(todo) {
+        let todos = this.state.todos.filter(todo => {
           return todo._id !== res.data._id
         });
         this.setState({todos})
