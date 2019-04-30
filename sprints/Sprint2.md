@@ -130,9 +130,13 @@ nav {
   justify-content: space-around;
 }
 
-.remove {
+.remove, .edit {
   float: right;
   cursor: pointer;
+}
+
+.edit {
+  margin-left: 2em;
 }
 
 
