@@ -113,7 +113,8 @@ Lets update our `Todo` render to have the `TodoForm` included. We'll also add an
           style={this.state.formStyle}
           autoFocus={true}
           buttonName="Update Todo!"
-          updateTodo={this.props.updateTodo} />
+          updateTodo={this.props.updateTodo}
+          toggleBodyForm={this.toggleBodyForm} />
       </li> 
     )
   }
@@ -123,7 +124,7 @@ You will then have to both write the `TodoForm` component and then import it int
 
 ```js
 //TodoForm.js
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 class TodoForm extends Component {
   constructor() {
@@ -137,12 +138,12 @@ class TodoForm extends Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault()
-    var todo = this.state.todo
-    this.props.updateTodo(todo)
-    this.setState({
-      todo: ""
-    })
+    event.preventDefault();
+    const todo = this.props.todo;
+    todo.body = this.state.todo;
+    this.props.updateTodo(todo);
+    this.setState({ todo: '' });
+    this.props.toggleBodyForm();
   }
 
   render(){
@@ -154,7 +155,7 @@ class TodoForm extends Component {
             onChange={ this.onChange }
             placeholder='Write a todo here ...'
             type='text'
-            value={(this.state && this.state.todo) || ''} />
+            value={this.state.todo} />
           <button type='submit'>Save</button>
         </form>
       </div>
@@ -177,8 +178,8 @@ import TodoForm from './TodoForm';
 In `models/Todo.js` add our method:
 
 ```js
-  static update(todoId, updateInfo) {
-    let request = axios.put(`${endPoint}/${todoId}`, updateInfo)
+  static update(todo) {
+    let request = axios.put(`${endPoint}/${todo._id}`, todo)
     return request
   }
 ```
