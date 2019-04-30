@@ -13,7 +13,7 @@ class Todo extends Component {
   render(){
     return(
       <li data-todos-index={this.props.todo.id}>
-        <span>{this.props.todo.body}</span>
+        <span className="todo-item">{this.props.todo.body}</span>
         <span
           className='remove'
           onClick={this.deleteClickedTodo}>
