@@ -10,7 +10,7 @@
 ## Framing
 For today, we'll be creating a Todo app in React.
 
-We've learned a tremendous amount about object oriented structures for web development. And they were great. With angular, we dabbled a bit with feature-based separation of concerns. React's component model takes that separation further and reduces the potential of tight coupling that often attends object oriented. Think of the FIRST principles:
+We've learned a tremendous amount about object oriented structures for web development. And they were great. We have also dabbled a bit with feature-based separation of concerns. React's component model takes that separation further and reduces the potential of tight coupling that often attends object oriented. Think of the FIRST principles:
 
 #### Focused
 
