@@ -63,9 +63,18 @@ In the `components/Todos.js`, add `updateTodo` to `<Todo>` props:
 ```
 
 <!-- Todo changes -->
-In `components/Todo.js` We need to add the method  `toggleBodyForm`:
+In `components/Todo.js` We need to add some state and add the method  `toggleBodyForm`:
 
 ```js
+  constructor(props) {
+    super(props);
+    this.state = {
+      formStyle: {
+        display: 'none'
+      }
+    }
+  }
+
   toggleBodyForm = () => {
     (this.state.formStyle.display === 'block')?
       this.setState({formStyle: {display: 'none'}, bodyStyle: {display:'block'} })
@@ -157,28 +166,9 @@ export default TodoForm
 
 ```js
 //Todo.js
-//...
-{ this.props.editingTodoId === this.props.todo._id ? 
-  <TodoForm
-    autoFocus={true}
-    onUpdateTodo={this.props.onUpdateTodo}
-    buttonName="Update Todo!"/> : '' }
-)
-//...
-```
+import React, {Component} from 'react';
+import TodoForm from './TodoForm';
 
-```js
-//Todos.js
-let todos = this.props.todos.map( (todo) => {
-  return (
-    <Todo
-      key={todo._id}
-      todo={todo}
-      deleteTodo={this.props.deleteTodo}
-      updateTodo={this.props.updateTodo}
-    />
-  )
-})
 //...
 ```
 
