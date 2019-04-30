@@ -78,11 +78,9 @@ In `components/Todo.js` We need to add some state and add the method  `toggleBod
   }
 
   toggleBodyForm = () => {
-    (this.state.formStyle.display === 'block')?
-      this.setState({formStyle: {display: 'none'}, bodyStyle: {display:'block'} })
-    :
-      this.setState({formStyle: {display:'block'}, bodyStyle: {display: 'none'}})
-    
+    this.state.formStyle.display === 'block'
+    ? this.setState({ formStyle: {display: 'none'} })
+    : this.setState({ formStyle: {display:'block'} });
   }
 ```
 
