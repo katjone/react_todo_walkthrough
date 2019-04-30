@@ -129,11 +129,11 @@ createTodo = (todo) => {
 render(){
   return (
     <div className="todosComponent">
+      <CreateTodoForm
+        createTodo={ this.createTodo } />
+
       <Todos
         todos={this.state.todos} />
-      <CreateTodoForm
-        createTodo={ this.createTodo }
-        />
     </div>
   )
 }
@@ -180,8 +180,8 @@ render(){
   return (
     <div className="todosComponent">
       <CreateTodoForm
-        createTodo={ this.createTodo }
-        />
+        createTodo={ this.createTodo } />
+
       <Todos
         todos={this.state.todos} />
     </div>
