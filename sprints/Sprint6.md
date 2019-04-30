@@ -93,7 +93,7 @@ Lets update our `Todo` render to have the `TodoForm` included. We'll also add an
     return(
       <li data-todos-index={this.props.todo.id}>
         <div style={this.state.bodyStyle}>
-          <span >
+          <span className="todo-item">
             {this.props.todo.body}</span>
           <span
             className='edit' 
