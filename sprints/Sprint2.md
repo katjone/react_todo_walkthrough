@@ -139,6 +139,11 @@ nav {
   margin-left: 2em;
 }
 
+.todo-item {
+  display: inline-block;
+  max-width: 400px;
+}
+
 
 /* ------------------------------------------------
   F O R M   S T Y L E S
