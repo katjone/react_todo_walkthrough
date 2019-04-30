@@ -19,13 +19,13 @@ In `containers/TodosContainer.js`:
   /* deleteTodo = ...  */
 
   updateTodo = (todoBody, todoId) => {
-    function isUpdatedTodo(todo) {
+    const isUpdatedTodo = todo => {
         return todo._id === todoId;
     }
     TodoModel.update(todoId, todoBody).then((res) => {
         let todos = this.state.todos
         todos.find(isUpdatedTodo).body = todoBody.body
-        this.setState({todos: todos})
+        this.setState({ todos: todos })
     })
   }
 
@@ -86,16 +86,16 @@ Lets update our `Todo` render to have the `TodoForm` included. We'll also add an
         <div style={this.state.bodyStyle}>
           <span >
             {this.props.todo.body}</span>
-          <a
+          <span
             className='edit' 
             onClick={this.toggleBodyForm}>
             Edit
-          </a>
-          <a
+          </span>
+          <span
             className='remove' 
             onClick={this.deleteClickedTodo}>
             Remove
-          </a>
+          </span>
         </div>
         <TodoForm 
           todo={this.props.todo}
