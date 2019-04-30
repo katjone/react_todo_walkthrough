@@ -102,8 +102,7 @@ Lets update our `Todo` render to have the `TodoForm` included. We'll also add an
           style={this.state.formStyle}
           autoFocus={true}
           buttonName="Update Todo!"
-          updateTodo={this.props.updateTodo} 
-          toggleBodyForm={this.toggleBodyForm} />
+          updateTodo={this.props.updateTodo} />
       </li> 
     )
   }
