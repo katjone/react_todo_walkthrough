@@ -78,7 +78,7 @@ class Todo extends Component {
   render(){
     return(
       <li data-todos-index={this.props.todo.id}>
-        <span>{this.props.todo.body}</span>
+        <span className="todo-item">{this.props.todo.body}</span>
       </li> 
     )
   }
@@ -144,7 +144,6 @@ class TodosContainer extends Component {
     TodoModel.all().then( (res) => {
       this.setState ({
         todos: res.data.todos,
-        todo: ''
       })
     })
   }
@@ -179,7 +178,6 @@ fetchData(){
   TodoModel.all().then( (res) => {
     this.setState ({
       todos: res.data.todos,
-      todo: ''
     })
   })
 }
@@ -231,7 +229,7 @@ In `src/components/Todo.js`:
 
 ```js
   <li data-todos-index={this.props.todo.id}>
-    <span>{this.props.todo.body}</span>
+    <span className="todo-item">{this.props.todo.body}</span>
   </li> 
 ```
 
